@@ -23,7 +23,7 @@ public class SampleTests {
 	
 	@Test
 	public void testExist() {
-		System.out.println("test1-----------");
+		System.out.println("test1-----------" + restaurant);
 		Log.info("test1--------------------");
 		Log.info(restaurant);
 //		System.out.println("test1------------------");
