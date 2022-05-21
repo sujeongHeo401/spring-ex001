@@ -47,7 +47,8 @@ public class DataSourceTests {
 //	@Setter(onMethod_ = {@Autowired} )
 	private DataSource dataSource;
 //	
-	@Setter(onMethod_ = { @Autowired })
+//	@Setter(onMethod_ = { @Autowired })
+	@Autowired
 	private SqlSessionFactory sqlSessionFactory;
 	
 	@Test
@@ -56,7 +57,7 @@ public class DataSourceTests {
 				Connection con = session.getConnection();
 				) {
 					log.info(session);
-					log.info(con);
+//					log.info(con);
 				} catch(Exception e) {
 					fail(e.getMessage());
 				}
