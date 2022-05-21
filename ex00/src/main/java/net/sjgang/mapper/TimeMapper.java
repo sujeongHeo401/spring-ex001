@@ -6,6 +6,9 @@ public interface TimeMapper {
 	
 	// ; 없어야 한다.
 	@Select("select sysdate from dual")
-	String getTime();
+	public String getTime();
+	
+	public String getTime2();
+	
 
 }
