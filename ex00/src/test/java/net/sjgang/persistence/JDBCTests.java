@@ -23,13 +23,21 @@ public class JDBCTests {
 	public void testConnection() throws Exception {
 		Class clz = Class.forName("oracle.jdbc.driver.OracleDriver");
 		
-		Connection con = DriverManager.getConnection(
+		long start = System.currentTimeMillis();
+		for(int i = 0; i < 100; i++) {
+			Connection con = DriverManager.getConnection(
 					"jdbc:oracle:thin:@localhost:1521:XE", 
 					"book_ex", "book_ex");
 		
-		log.info(con);
+			log.info(con);
+			
+			con.close(); //// bad code 
+		}
 		
-		con.close(); //// bad code 
+		long end = System.currentTimeMillis();
+		log.info("----------");
+		log.info(end - start);
+
 //		try(Connection con = DriverManager.getConnection(
 //				"jdbc:oracle:thin:@localhost:1521:XE",
 //				"book_ex",

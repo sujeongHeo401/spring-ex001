@@ -27,12 +27,19 @@ public class DataSourceTests {
 	@Test
 	public void testConnection(){
 		
-		try(Connection con = ds.getConnection()){
-			log.info(con);
-		}catch(Exception e) {
-			e.printStackTrace();
-			log.error(e.getMessage());
+		long start = System.currentTimeMillis();
+		for(int i = 0; i < 100; i++) {
+			try(Connection con = ds.getConnection()){
+				log.info(con);
+			}catch(Exception e) {
+				e.printStackTrace();
+				log.error(e.getMessage());
+			}
 		}
+		
+		long end = System.currentTimeMillis();
+		log.info("--------------");
+		log.info(end - start);
 	}
 
 //	@Setter(onMethod_ = {@Autowired} )
