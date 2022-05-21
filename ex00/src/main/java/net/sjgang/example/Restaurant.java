@@ -6,6 +6,7 @@ import org.springframework.stereotype.Component;
 import lombok.ToString;
 import lombok.Setter;
 import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 /// Setter 주입
 /// 생성자 주입
@@ -14,11 +15,12 @@ import lombok.AllArgsConstructor;
 
 @Component
 @ToString
-@AllArgsConstructor
+//@AllArgsConstructor
+@RequiredArgsConstructor
 public class Restaurant {
 	
 //	@Setter(onMethod_ = {@Autowired} )
-	private Chef chef;
+	private final Chef chef; ////////// 5점대에서 적용 ,final 필드 자동 주입 기능 
 	
 
 }
