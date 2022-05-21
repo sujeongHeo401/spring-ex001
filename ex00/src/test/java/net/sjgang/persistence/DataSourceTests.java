@@ -20,16 +20,30 @@ import lombok.extern.log4j.Log4j;
 @ContextConfiguration(classes = {RootConfig.class})
 @Log4j
 public class DataSourceTests {
-
-	@Setter(onMethod_ = { @Autowired} )
-	private DataSource dataSource;
+	
+	@Autowired
+	private DataSource ds;
+	
 	@Test
-	public void testConnection() {
-		try(Connection con = dataSource.getConnection()){
+	public void testConnection(){
+		
+		try(Connection con = ds.getConnection()){
 			log.info(con);
-		} catch(Exception e) {
-			fail(e.getMessage());
+		}catch(Exception e) {
+			e.printStackTrace();
+			log.error(e.getMessage());
 		}
 	}
+
+//	@Setter(onMethod_ = {@Autowired} )
+//	private DataSource dataSource;
+//	@Test
+//	public void testConnection() {
+//		try(Connection con = dataSource.getConnection()){
+//			log.info(con);
+//		} catch(Exception e) {
+//			fail(e.getMessage());
+//		}
+//	}
 
 }
