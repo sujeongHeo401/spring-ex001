@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.ArrayList;
 import java.util.Arrays;
 import net.sjgang.domain.SampleDTO;
+import net.sjgang.domain.SampleDTOList;
 import lombok.extern.log4j.Log4j;
 
 @Controller
@@ -60,4 +61,9 @@ public class SampleController {
 		return "ex02Array";
 	}
 	
+	@GetMapping("/ex02Bean")
+	public String ex02Bean(SampleDTOList list) {
+		log.info("list dtos : " + list);
+		return "ex02Bean";
+	}
 }
