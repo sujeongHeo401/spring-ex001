@@ -2,7 +2,9 @@ package net.sjgang.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import lombok.extern.log4j.Log4j;
 @Controller
@@ -14,4 +16,17 @@ public class SampleController {
 		log.info("basic........");
 		
 	}
+
+	@RequestMapping(value = "/basic", method = {RequestMethod.GET, RequestMethod.POST})
+	public void basicGet() {
+		log.info("basic get........");
+		
+	}
+	
+	@RequestMapping(value = "/basicOnlyGet")
+	public void basicGet2() {
+		log.info("basic only get........");
+		
+	}
+	
 }
