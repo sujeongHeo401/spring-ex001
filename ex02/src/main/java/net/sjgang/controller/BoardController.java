@@ -22,8 +22,9 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	public void list(Model model) {
+		System.out.println("model + class : " + model.getClass());
 		log.info("list");
-		model.addAttribute("list", service.getList());
+//		model.addAttribute("list", service.getList());
 	}
 
 	@PostMapping("/register")
