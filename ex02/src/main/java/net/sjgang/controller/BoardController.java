@@ -1,6 +1,7 @@
 package net.sjgang.controller;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,21 +11,25 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import net.sjgang.domain.BoardVO;
+import net.sjgang.mapper.BoardMapper;
 import net.sjgang.service.BoardService;
 import lombok.AllArgsConstructor;
+import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 
 @Controller
 @Log4j
 @RequestMapping("/board/*")
 public class BoardController {
+	
+	@Setter(onMethod_ = @Autowired)
 	private BoardService service;
 	
 	@GetMapping("/list")
 	public void list(Model model) {
 		System.out.println("model + class : " + model.getClass());
 		log.info("list");
-//		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.getList());
 	}
 
 	@PostMapping("/register")
