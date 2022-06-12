@@ -48,4 +48,30 @@ public class BoardMapperTest {
 		log.info(board);
 		
 	}
+	
+	@Test
+	public void testRead() {
+		// 존재하는 게시물 번호로 리스트
+		BoardVO board = mapper.read(1L);
+		
+		log.info(board);
+	}
+	
+	@Test
+	public void testDelete() {
+		log.info("DELETE COUNT : " + mapper.delete(3L));
+	}
+	
+	@Test
+	public void testUpdate() {
+		BoardVO board = new BoardVO();
+		// 실행 전에는 존재하는 번호인지 확인할 것
+		board.setBno(5L);
+		board.setTitle("수뗭된 쩨목");
+		board.setContent("수떵된 내용");
+		board.setWriter("user00");
+		
+		int count = mapper.update(board);
+		log.info("UPDATE COUNT: " + count);
+	}
 }
