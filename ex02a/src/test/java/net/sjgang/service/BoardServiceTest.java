@@ -18,7 +18,6 @@ import net.sjgang.mapper.BoardMapperTest;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
-
 public class BoardServiceTest {
 	
 	@Setter(onMethod_ = {@Autowired})

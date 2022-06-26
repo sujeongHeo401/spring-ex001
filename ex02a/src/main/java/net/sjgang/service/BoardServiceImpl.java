@@ -16,13 +16,21 @@ import lombok.extern.log4j.Log4j;
 @AllArgsConstructor
 public class BoardServiceImpl implements BoardService {
 	
-	@Setter(onMethod_ = @Autowired)
+	//@Setter(onMethod_ = @Autowired)
 	private BoardMapper mapper;
 	
 	@Override
 	public void register(BoardVO board){
 		log.info("register....." + board);
 		mapper.insertSelectKey(board);
+	}
+	
+	@Override
+	public List<BoardVO> getList() {
+		// TODO Auto-generated method stub
+		
+		log.info("get List.....");
+		return mapper.getList();
 	}
 
 	@Override
@@ -49,12 +57,6 @@ public class BoardServiceImpl implements BoardService {
 		return mapper.delete(bno) == 1;
 	}
 
-	@Override
-	public List<BoardVO> getList() {
-		// TODO Auto-generated method stub
-		
-		log.info("get List.....");
-		return mapper.getList();
-	}
+
 
 }
