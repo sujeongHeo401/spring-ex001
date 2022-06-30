@@ -1,6 +1,6 @@
 package net.sjgang.controller;
-import org.aspectj.lang.annotation.Before;
 import org.junit.Test;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -27,7 +27,7 @@ public class BoardControllerTests {
 
 	private MockMvc mockMvc;
 	
-	@Before(value = "")
+	@Before
 	public void setup() {
 		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 		System.out.println("orni ?????");
@@ -35,7 +35,6 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testList() throws Exception {
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 		log.info(
 				mockMvc.perform(MockMvcRequestBuilders.get("/board/list"))
 				.andReturn()
@@ -45,8 +44,6 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testRegister() throws Exception {
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
-
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/register")
 				.param("title" , "테스트 새글 제목")
 				.param("content", "테스트 새글 내용")
@@ -58,9 +55,6 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testGet() throws Exception {
-
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
-
 		log.info(mockMvc.perform(MockMvcRequestBuilders 
 				.get("/board/get")
 				.param("bno", "2"))
@@ -70,8 +64,6 @@ public class BoardControllerTests {
 	
 	@Test
 	public void testModify() throws Exception {
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
-
 		String resultPage = mockMvc
 				.perform(MockMvcRequestBuilders.post("/board/modify")
 				.param("bno", "1")
@@ -87,7 +79,6 @@ public class BoardControllerTests {
 	@Test
 	public void testRemove() throws Exception{
 		// 삭제 전 데이터 베이스에 게시물 번호 확인할 거ㅓㅅ
-		this.mockMvc = MockMvcBuilders.webAppContextSetup(ctx).build();
 		String resultPage = mockMvc.perform(MockMvcRequestBuilders.post("/board/remove")
 				.param("bno", "25")
 				).andReturn().getModelAndView().getViewName();
