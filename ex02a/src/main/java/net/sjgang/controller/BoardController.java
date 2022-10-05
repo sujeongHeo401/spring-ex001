@@ -3,23 +3,19 @@ package net.sjgang.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.context.WebApplicationContext;
-
-import net.sjgang.domain.BoardVO;
-import net.sjgang.service.BoardService;
-
 import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
 import lombok.Setter;
+import lombok.extern.log4j.Log4j;
+import net.sjgang.domain.BoardVO;
+import net.sjgang.domain.Criteria;
+import net.sjgang.service.BoardService;
 
 @Controller
 @Log4j
@@ -61,11 +57,18 @@ public class BoardController {
 		return "redirect:/board/list";
 	}
 	
+//	@GetMapping("/list")
+//	private void list(Model model) {
+//		log.info("list");
+//		
+//		model.addAttribute("list", service.getList());
+//	}
+	
 	@GetMapping("/list")
-	private void list(Model model) {
+	private void list(Criteria cri, Model model) {
 		log.info("list");
 		
-		model.addAttribute("list", service.getList());
+		model.addAttribute("list", service.getList(cri));
 	}
 	
 	@PostMapping("/register")

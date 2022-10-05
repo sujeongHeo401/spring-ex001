@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import net.sjgang.domain.BoardVO;
-import net.sjgang.mapper.BoardMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
 import lombok.extern.log4j.Log4j;
+import net.sjgang.domain.BoardVO;
+import net.sjgang.domain.Criteria;
+import net.sjgang.mapper.BoardMapper;
 
 @Log4j
 @Service
@@ -25,12 +26,20 @@ public class BoardServiceImpl implements BoardService {
 		mapper.insertSelectKey(board);
 	}
 	
+//	@Override
+//	public List<BoardVO> getList() {
+//		// TODO Auto-generated method stub
+//		
+//		log.info("get List.....");
+//		return mapper.getList();
+//	}
+	
 	@Override
-	public List<BoardVO> getList() {
+	public List<BoardVO> getList(Criteria cri) {
 		// TODO Auto-generated method stub
 		
-		log.info("get List.....");
-		return mapper.getList();
+		log.info("get List....." + cri);
+		return mapper.getListWithPaging(cri);
 	}
 
 	@Override

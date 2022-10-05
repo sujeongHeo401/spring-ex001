@@ -62,6 +62,8 @@ public class BoardControllerTests {
 				.getModelAndView().getModelMap());
 	}
 	
+
+	
 	@Test
 	public void testModify() throws Exception {
 		String resultPage = mockMvc
@@ -85,6 +87,15 @@ public class BoardControllerTests {
 		
 		log.info(resultPage);
 		
+	}
+	
+	@Test 
+	public void testListPaging() throws Exception {
+		log.info(mockMvc.perform(
+				MockMvcRequestBuilders.get("/board/list")
+				.param("pageNum", "2")
+				.param("amount", "50"))
+				.andReturn().getModelAndView().getModelMap());
 	}
 }
 
