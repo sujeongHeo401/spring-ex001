@@ -38,7 +38,7 @@ public class BoardServiceImpl implements BoardService {
 	public List<BoardVO> getList(Criteria cri) {
 		// TODO Auto-generated method stub
 		
-		log.info("get List....." + cri);
+		log.info("22222222222222222222 get List....." + cri);
 		return mapper.getListWithPaging(cri);
 	}
 

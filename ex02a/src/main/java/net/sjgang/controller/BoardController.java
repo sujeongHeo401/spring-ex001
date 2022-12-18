@@ -15,6 +15,7 @@ import lombok.Setter;
 import lombok.extern.log4j.Log4j;
 import net.sjgang.domain.BoardVO;
 import net.sjgang.domain.Criteria;
+import net.sjgang.domain.PageDTO;
 import net.sjgang.service.BoardService;
 
 @Controller
@@ -66,9 +67,11 @@ public class BoardController {
 	
 	@GetMapping("/list")
 	private void list(Criteria cri, Model model) {
-		log.info("list");
-		
+		log.info("list" + cri);
+		log.info("list11111 " + cri);
+
 		model.addAttribute("list", service.getList(cri));
+		model.addAttribute("pageMaker", new PageDTO(cri, 123));
 	}
 	
 	@PostMapping("/register")
