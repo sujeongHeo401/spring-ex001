@@ -14,15 +14,20 @@ import net.sjgang.domain.SampleVO;
 public class SampleController {
 	
 	
-	@GetMapping(value="/getSample"
-			,produces = { MediaType.APPLICATION_JSON_VALUE,
+	@GetMapping(value="/getSample",
+			produces = { MediaType.APPLICATION_JSON_VALUE,
 						MediaType.APPLICATION_XML_VALUE })
 	public SampleVO getSample() {
+		
+		//return new String[] {"AAA","BBB","CCC"};
+		
 		return new SampleVO(112, "스타", "로드");
 	}
+	
+	
 	@GetMapping(value ="/getText", produces ="text/plain; charset=UTF-8")
 	public String getText() {
-		log.info("MIME TYPE: " + MediaType.TEXT_PLAIN_VALUE);
+		System.out.println("MIME TYPE: " + MediaType.TEXT_PLAIN_VALUE);
 		return "안녕하세요";
 	}
 
