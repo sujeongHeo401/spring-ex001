@@ -21,7 +21,18 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
+
+	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
+	<beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<beans:property name="defaultEncoding" value="utf-8"></beans:property>
+		<beans:property name="maxUploadSize" value="1048576560"></beans:property>
+		<beans:property name="maxUploadSizePerFile" value="2097152"></beans:property>
+		<beans:property name="uploadTempDir" value="file:/C:/upload/tmp"></beans:property>
+		<beans:property name="maxInMemorySize" value="104857656"></beans:property>
+	</beans:bean>
+	
 	<context:component-scan base-package="net.sjgang.controller" />
+	<context:component-scan base-package="net.sjgang.exception" />
 	
 	
 	
